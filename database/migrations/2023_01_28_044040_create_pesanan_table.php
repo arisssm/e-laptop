@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('pesanan', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('pelanggan_id');
-            $table->bigInteger('keranjang_id');
             $table->bigInteger('bank_id');
+            $table->string('nama');
+            $table->text('alamat');
+            $table->string('nomor_telepon');
             $table->text('catatan');
             $table->bigInteger('pengiriman_id');
             $table->enum('metode_bayar', ['transfer_bank', 'cod']);
