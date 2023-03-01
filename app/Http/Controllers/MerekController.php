@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Merek;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\fileExists;
+
 class MerekController extends Controller
 {
     /**
@@ -12,11 +14,16 @@ class MerekController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $merek = Merek::all();
+        $q = $request->q;
+        if (isset($q)) {
+            $merek = Merek::where('nama', 'like', '%' . $q . '%')->paginate(3);
+        } else {
+            $merek = Merek::paginate(3);
+        }
         // return $merek;
-        return view('merek.index', compact('merek'));
+        return view('merek.index', compact('merek', 'q'));
     }
 
     /**
@@ -37,17 +44,31 @@ class MerekController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'nama' => 'required|max:10|min:4',
+                'logo' => 'required',
+            ],
+            [
+                'nama.required' => 'Silahkan input nama merek',
+                'nama.max' => 'nama merek max.10 karakter',
+                'nama.min' => 'nama merek min.4 karakter',
+                'logo.required' => 'Silahkan pilih logo',
+            ]
+        );
+
         $image = $request->file('logo');
-        $logoName = time() . '-'. rand() .'-'. $image->getClientOriginalName();
+        $logoName = time() . '-' . rand() . '-' . $image->getClientOriginalName();
         $image->move(public_path('assets/images/merek'), $logoName);
 
         Merek::create([
             'nama' => $request->nama,
+            //string, text, number, date, time, -->database
+            // type file --> tersendiri di folder
             'logo' => $logoName,
         ]);
 
         return redirect('/merek');
-
     }
 
     /**
@@ -69,7 +90,8 @@ class MerekController extends Controller
      */
     public function edit(Merek $merek)
     {
-        //
+        // return $merek;
+        return view('merek.edit', compact('merek'));
     }
 
     /**
@@ -81,7 +103,42 @@ class MerekController extends Controller
      */
     public function update(Request $request, Merek $merek)
     {
-        //
+        // return $request;
+        $request->validate(
+            [
+                'nama' => 'required|max:10|min:4',
+                'logo' => 'required',
+            ],
+            [
+                'nama.required' => 'Silahkan input nama merek',
+                'nama.max' => 'nama merek max.10 karakter',
+                'nama.min' => 'nama merek min.4 karakter',
+                'logo.required' => 'Silahkan pilih logo',
+            ]
+        );
+
+        if ($request->hasFile('logo')) {
+            
+            if (fileExists(public_path('assets/images/merek/' . $merek->logo))) {
+                unlink(public_path('assets/images/merek/' . $merek->logo));
+            }
+            $image = $request->file('logo');
+            $logoName = time() . '-' . rand() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('assets/images/merek'), $logoName);
+
+            Merek::where('id', $merek->id)
+                ->update([
+                    'nama' => $request->nama,
+                    'logo' => $logoName
+                ]);
+        } else {
+            Merek::where('id', $merek->id)
+                ->update([
+                    'nama' => $request->nama
+                ]);
+        }
+
+        return redirect('/merek');
     }
 
     /**
@@ -92,6 +149,12 @@ class MerekController extends Controller
      */
     public function destroy(Merek $merek)
     {
-        //
+        // return $merek;
+
+        Merek::destroy($merek->id);
+        if (fileExists(public_path('assets/images/merek/' . $merek->logo))) {
+            unlink(public_path('assets/images/merek/' . $merek->logo));
+        }
+        return redirect('/merek');
     }
 }
