@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pengiriman', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->double('biaya');
+            $table->bigInteger('biaya');
             $table->timestamps();
         });
     }
