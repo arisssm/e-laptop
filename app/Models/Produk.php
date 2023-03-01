@@ -10,6 +10,7 @@ class Produk extends Model
     use HasFactory;
     protected $table = 'produk';
     protected $guarded = [''];
+    // protected $fillable = ['nama','merek_id','harga','foto','stok','spesifikasi'];
 
     public function keranjang()
     {
