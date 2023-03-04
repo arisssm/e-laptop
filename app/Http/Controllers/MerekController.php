@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Merek;
 use Illuminate\Http\Request;
 
+use Symfony\Contracts\Service\Attribute\Required;
 use function PHPUnit\Framework\fileExists;
 
 class MerekController extends Controller
