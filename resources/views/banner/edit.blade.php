@@ -36,7 +36,7 @@
                                             <div class="col-md-8 form-group">
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" name="status" type="checkbox"
-                                                        id="status" value="{{old('status')}}">
+                                                        id="status" value="{{old('status')}}" @if ($banner->status == 'hide') checked @endif>
                                                     <div class="invalid-feedback">
                                                         @error('status')
                                                             {{ $message }}
