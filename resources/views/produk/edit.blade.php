@@ -13,13 +13,18 @@
                         <div class="card-header">
                             <h4 class="card-title">Produk Laptop</h4>
                         </div>
-                        {{-- @if ($errors->any())
+                        @if (session()->has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if ($errors->any())
                             @foreach ($errors->all() as $item)
                                 <div class="alert alert-danger" role="alert">
                                     {{ $item }}
                                 </div>
                             @endforeach
-                        @endif --}}
+                        @endif
                         <div class="card-content">
                             <div class="card-body">
                                 <form class="form form-vertical" action="{{ url('/produk/' . $produk->id) }}" method="POST"
