@@ -59,7 +59,7 @@ class PengirimanController extends Controller
             'biaya' => $request->biaya
         ]);
 
-        return redirect('/pengiriman');
+        return redirect('/pengiriman')->with('success', $request->nama. ' berhasil ditambahkan!');
     }
 
     /**
@@ -110,7 +110,7 @@ class PengirimanController extends Controller
                 'biaya' => $request->biaya
             ]);
     
-            return redirect('/pengiriman');
+            return redirect('/pengiriman')->with('success', $request->nama. ' berhasil di ubah!');
     }
 
     /**
@@ -119,9 +119,9 @@ class PengirimanController extends Controller
      * @param  App\Models\Pengiriman $pengiriman
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pengiriman $pengiriman)
+    public function destroy(Request $request, Pengiriman $pengiriman)
     {
         Pengiriman::destroy($pengiriman->id);
-        return redirect('/pengiriman');
+        return redirect('/pengiriman')->with('success', $request->nama. ' berhasil dihapus!');
     }
 }

@@ -69,7 +69,7 @@ class MerekController extends Controller
             'logo' => $logoName,
         ]);
 
-        return redirect('/merek');
+        return redirect('/merek')->with('success', $request->nama. ' berhasil ditambahkan!');
     }
 
     /**
@@ -139,7 +139,7 @@ class MerekController extends Controller
                 ]);
         }
 
-        return redirect('/merek');
+        return redirect('/merek')->with('success', $request->nama. ' berhasil di ubah!');
     }
 
     /**
@@ -148,7 +148,7 @@ class MerekController extends Controller
      * @param  \App\Models\Merek  $merek
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Merek $merek)
+    public function destroy(Request $request, Merek $merek)
     {
         // return $merek;
 
@@ -156,6 +156,6 @@ class MerekController extends Controller
         if (fileExists(public_path('assets/images/merek/' . $merek->logo))) {
             unlink(public_path('assets/images/merek/' . $merek->logo));
         }
-        return redirect('/merek');
+        return redirect('/merek')->with('success', $request->nama. ' berhasil dihapus!');
     }
 }

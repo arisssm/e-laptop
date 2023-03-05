@@ -10,6 +10,18 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
+                    @if (session()->has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $item)
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $item }}
+                                </div>
+                            @endforeach
+                        @endif
                     <div class="row">
                         <div class="col">
                             <a href="{{ url('/merek/create') }}" type="button" class="btn-sm btn-primary">

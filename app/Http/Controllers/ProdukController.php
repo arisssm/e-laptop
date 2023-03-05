@@ -83,7 +83,7 @@ class ProdukController extends Controller
             'rekomendasi' => $request->has('rekomendasi') ? $request->rekomendasi : 'tidak' //ternary operator
         ]);
 
-        return redirect('/produk')->with('success', $request->nama. 'berhasil ditambahkan!');
+        return redirect('/produk')->with('success', $request->nama. ' berhasil ditambahkan!');
     }
 
     /**
@@ -174,7 +174,7 @@ class ProdukController extends Controller
             ]);
         }
 
-        return redirect('/produk')->with('success', $request->nama. 'berhasil diubah!');
+        return redirect('/produk')->with('success', $request->nama. ' berhasil diubah!');
     }
 
     /**
@@ -189,6 +189,6 @@ class ProdukController extends Controller
         if (fileExists(public_path('assets/images/produk/' . $produk->foto))) {
             unlink(public_path('assets/images/produk/' . $produk->foto));
         }
-        return redirect('/produk')->with('success', $request->nama. 'berhasil dihapus!');
+        return redirect('/produk')->with('success', $request->nama. ' berhasil dihapus!');
     }
 }

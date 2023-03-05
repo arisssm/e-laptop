@@ -73,7 +73,7 @@ class BankController extends Controller
             'logo' => $logoName
         ]);
 
-        return redirect('/bank');
+        return redirect('/bank')->with('success', $request->nama. ' berhasil ditambahkan!');
     }
 
     /**
@@ -148,7 +148,7 @@ class BankController extends Controller
             ]);
         }
 
-        return redirect('/bank');
+        return redirect('/bank')->with('success', $request->nama. ' berhasil diubah!');
     }
 
     /**
@@ -163,6 +163,6 @@ class BankController extends Controller
         if (fileExists(public_path('assets/images/bank/' . $bank->logo))) {
             unlink(public_path('assets/images/bank/' . $bank->logo));
         }
-        return redirect('/bank');
+        return redirect('/bank')->with('success', $bank->nama. ' berhasil dihapus!');
     }
 }

@@ -64,7 +64,7 @@ class BannerController extends Controller
                 'status' => $request->has('status') ? $request->status : 'unhide'
             ]);
 
-            return redirect('/banner/satu');
+            return redirect('/banner/satu')->with('success','Banner ' .$spanduk. ' berhasil ditambahkan!');
         } else if ($spanduk == 'dua') {
 
             $image = $request->file('gambar');
@@ -75,7 +75,7 @@ class BannerController extends Controller
                 'gambar' => $gambarName,
                 'status' => $request->has('status') ? $request->status : 'unhide'
             ]);
-            return redirect('/banner/dua');
+            return redirect('/banner/dua')->with('success','Banner ' .$spanduk. ' berhasil ditambahkan!');
         } else {
             return redirect()->back();
         }
@@ -132,7 +132,7 @@ class BannerController extends Controller
                     'status' => $request->has('status') ? $request->status : 'unhide'
                 ]);
                 
-                return redirect('/banner/satu');
+                return redirect('/banner/satu')->with('success','Banner ' .$spanduk. ' berhasil diubah!');
             } elseif ($spanduk == 'dua') {
                 // return $id;
                 $banner = BannerDua::where('id', $id)->first();
@@ -150,7 +150,7 @@ class BannerController extends Controller
                     'status' => $request->has('status') ? $request->status : 'unhide'
                 ]);
 
-                return redirect('/banner/dua');
+                return redirect('/banner/dua')->with('success','Banner ' .$spanduk. ' berhasil diubah!');
             } else {
                 return redirect()->back();
             }
@@ -185,6 +185,6 @@ class BannerController extends Controller
             }
             BannerDua::destroy($id);
         }
-        return redirect('/banner/' . $spanduk);
+        return redirect('/banner/' . $spanduk)->with('success','Banner ' .$spanduk. ' berhasil ditambahkan!');
     }
 }
