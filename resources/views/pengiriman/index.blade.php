@@ -11,17 +11,20 @@
             <div class="card">
                 <div class="card-header">
                     @if (session()->has('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('success') }}
+                        <div class="alert alert-success alert-dismissible show fade" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $item)
+                            <div class="alert alert-danger alert-dismissible show fade" role="alert">
+                                {{ $item }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
                             </div>
-                        @endif
-                        @if ($errors->any())
-                            @foreach ($errors->all() as $item)
-                                <div class="alert alert-danger" role="alert">
-                                    {{ $item }}
-                                </div>
-                            @endforeach
-                        @endif
+                        @endforeach
+                    @endif
                     <div class="row">
                         <div class="col">
                             <a href="{{ url('/pengiriman/create') }}" type="button" class="btn-sm btn-primary">
@@ -99,13 +102,13 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
     <script>
-            $('body').on('click', '#btnHapus', function(event) {
-                var id = $(this).data('id');
-                var url = "{{ url('/pengiriman') }}/" + id;
-                console.log(url);
-                $('#modalHapus').modal('show');
-                var form = document.getElementById('formHapus');
-                form.action = url;
-            })
+        $('body').on('click', '#btnHapus', function(event) {
+            var id = $(this).data('id');
+            var url = "{{ url('/pengiriman') }}/" + id;
+            console.log(url);
+            $('#modalHapus').modal('show');
+            var form = document.getElementById('formHapus');
+            form.action = url;
+        })
     </script>
 @endsection
