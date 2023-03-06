@@ -120,6 +120,8 @@ class MerekController extends Controller
 
         if ($request->hasFile('logo')) {
             
+            // return $merek;
+
             if (fileExists(public_path('assets/images/merek/' . $merek->logo))) {
                 unlink(public_path('assets/images/merek/' . $merek->logo));
             }
@@ -148,14 +150,13 @@ class MerekController extends Controller
      * @param  \App\Models\Merek  $merek
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Merek $merek)
+    public function destroy(Merek $merek)
     {
-        // return $merek;
 
         Merek::destroy($merek->id);
         if (fileExists(public_path('assets/images/merek/' . $merek->logo))) {
             unlink(public_path('assets/images/merek/' . $merek->logo));
         }
-        return redirect('/merek')->with('success', $request->nama. ' berhasil dihapus!');
+        return redirect('/merek')->with('success','Data berhasil dihapus!');
     }
 }

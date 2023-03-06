@@ -163,6 +163,6 @@ class BankController extends Controller
         if (fileExists(public_path('assets/images/bank/' . $bank->logo))) {
             unlink(public_path('assets/images/bank/' . $bank->logo));
         }
-        return redirect('/bank')->with('success', $bank->nama. ' berhasil dihapus!');
+        return redirect('/bank')->with('success','Data berhasil dihapus!');
     }
 }

@@ -119,9 +119,9 @@ class PengirimanController extends Controller
      * @param  App\Models\Pengiriman $pengiriman
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Pengiriman $pengiriman)
+    public function destroy(Pengiriman $pengiriman)
     {
         Pengiriman::destroy($pengiriman->id);
-        return redirect('/pengiriman')->with('success', $request->nama. ' berhasil dihapus!');
+        return redirect('/pengiriman')->with('success','Data berhasil dihapus!');
     }
 }

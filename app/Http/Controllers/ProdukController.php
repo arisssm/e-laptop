@@ -183,12 +183,12 @@ class ProdukController extends Controller
      * @param  \App\Models\produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, produk $produk)
+    public function destroy(produk $produk)
     {
         Produk::destroy($produk->id);
         if (fileExists(public_path('assets/images/produk/' . $produk->foto))) {
             unlink(public_path('assets/images/produk/' . $produk->foto));
         }
-        return redirect('/produk')->with('success', $request->nama. ' berhasil dihapus!');
+        return redirect('/produk')->with('success','Data berhasil dihapus!');
     }
 }

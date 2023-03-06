@@ -185,6 +185,6 @@ class BannerController extends Controller
             }
             BannerDua::destroy($id);
         }
-        return redirect('/banner/' . $spanduk)->with('success','Banner ' .$spanduk. ' berhasil ditambahkan!');
+        return redirect('/banner/' . $spanduk)->with('success','Banner ' .$spanduk. ' berhasil dihapus!');
     }
 }
