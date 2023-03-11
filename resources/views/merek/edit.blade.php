@@ -46,7 +46,6 @@
                                                 </div>
                                         </div>
                                         <img src="{{ asset('assets/images/merek/'  . $merek->logo )}}" alt="">
-                                        {{-- harusnya pakai js/ akhir pertemuan --}}
                                         <div class="col-sm-12 d-flex justify-content-end mt-2">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                             <button type="reset"

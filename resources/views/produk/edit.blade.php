@@ -78,7 +78,7 @@
                                                 <div class="form-group">
                                                     <label for="" class="form-label">Spesifikasi</label>
                                                     <textarea type="text" name="spesifikasi" id="spesifikasi"
-                                                        class="form-control @error('spesifikasi') is-invalid @enderror " cols="" rows="3">{{ $produk->spesifikasi }}
+                                                        class="form-control @error('spesifikasi') is-invalid @enderror " cols="" rows="10">{{ $produk->spesifikasi }}
                                                     </textarea>
                                                     <div class="invalid-feedback">
                                                         @error('spesifikasi')

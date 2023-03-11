@@ -26,17 +26,20 @@
                         @endforeach
                     @endif
                     <div class="row">
-                        <div class="col">
-                            <a href="{{ url('/produk/create') }}" type="button" class="btn-sm btn-primary">
+                        <div class="col-md-8">
+                            <a href="{{ url('/produk/create') }}" type="button" class="btn-sm btn-primary mb-3">
                                 <i class="bi bi-plus"></i> Tambah
                             </a>
                         </div>
-                        <div class="col text-end">
+                        <div class="col-md-4">
                             <form action="">
-                                <input class="" type="text" name="q" placeholder="cari data..."
-                                    value="{{ $q }}">
-                                <button class="btn btn-success" type="submit"> <i class="fa-solid fa-search"
-                                        aria-hidden="true"></i></button>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="q" placeholder="cari data.."
+                                        value="{{ $q }}">
+                                    <button class="btn btn-success" type="submit" id=""><i
+                                            class="fa-solid fa-search" aria-hidden="true"></i>
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>

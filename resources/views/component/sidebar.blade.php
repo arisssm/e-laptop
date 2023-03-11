@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="{{ url('/dashboard') }}"><img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo"
+                    <a href="{{ url('/') }}"><img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo"
                             srcset=""></a>
                 </div>
                 <div class="toggler">
@@ -13,19 +13,19 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-item">
+                <li class="sidebar-item @if (Request::segment(1) == '') active @endif">
                     <a href="{{ url('/') }}" class='sidebar-link'>
                         <i class="fa-solid fa-home"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item @if (Request::segment(1) == 'keranjang') active @endif">
                     <a href="{{ url('/keranjang') }}" class='sidebar-link'>
                         <i class="fa-solid fa-shopping-cart"></i>
                         <span>Keranjang</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item @if (Request::segment(1) == 'pesanan') active @endif">
                     <a href="{{ url('/pesanan') }}" class='sidebar-link'>
                         <i class="fa-solid fa-shopping-bag"></i>
                         <span>Pesanan</span>
@@ -34,7 +34,7 @@
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="fa-solid fa-database"></i>
-                        <span><b>Master Data</b></span>
+                        <span>Master Data</span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item @if (Request::segment(1) == 'merek') active @endif">

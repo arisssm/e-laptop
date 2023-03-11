@@ -1,7 +1,7 @@
 <footer>
     <div class="footer clearfix mb-0 text-muted">
         <div class="float-start">
-            <p>2023 &copy; Synapase Academy</p>
+            <p>2023 &copy; Synapse Academy</p>
         </div>
         <div class="float-end">
                 <a href="http://synapeacademy.com"><i class="fa fa-code"></i> Batch 15</a>

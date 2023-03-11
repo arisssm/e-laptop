@@ -26,8 +26,8 @@
                         @endforeach
                     @endif
                     <div class="row">
-                        <div class="col">
-                            <ul class="nav nav-pills nav-fill">
+                        <div class="col-md-8">
+                            <ul class="nav nav-pills nav-fill mb-3">
                                 <li class="nav-item">
                                     <a class="nav-link @if (Request::segment(2) == 'satu') active @endif"
                                         href="{{ url('banner/satu') }}">Banner Satu</a>
@@ -38,12 +38,15 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col text-end">
+                        <div class="col-md-4">
                             <form action="">
-                                <input class="" type="text" name="q" placeholder="cari data..."
-                                    value="">
-                                <button class="btn btn-success" type="submit"> <i class="fa-solid fa-search"
-                                        aria-hidden="true"></i></button>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="q" placeholder="cari data.."
+                                        value="{{ $q }}">
+                                    <button class="btn btn-success" type="submit" id=""><i
+                                            class="fa-solid fa-search" aria-hidden="true"></i>
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -52,11 +55,11 @@
                     <div class="row">
                         <div class="col text-end">
                             @if (Request::segment(2) == 'satu')
-                                <a href="{{ url('/banner/create/' . $spanduk) }}" type="button" class="btn-sm btn-primary">
+                                <a href="{{ url('/banner/create/' . $spanduk) }}" type="button" class="btn-sm btn-primary mb-3">
                                     <i class="fa-solid fa-plus"></i> Tambah Banner Satu
                                 </a>
                             @else
-                                <a href="{{ url('/banner/create/' . $spanduk) }}" type="button" class="btn-sm btn-primary">
+                                <a href="{{ url('/banner/create/' . $spanduk) }}" type="button" class="btn-sm btn-primary mb-3">
                                     <i class="fa-solid fa-plus"></i> Tambah Banner Dua
                                 </a>
                             @endif
