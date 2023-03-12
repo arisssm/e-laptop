@@ -69,6 +69,26 @@
                         </li>
                     </ul>
                 </li>
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="fas fa-info-circle"></i>
+                        <span>Pengaturan Akun</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item @if (Request::segment(1) == 'user') active @endif">
+                            <a href="{{ url('/user') }}">
+                                <i class="fas fa-user"></i>
+                                <span>User</span>
+                            </a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ url('/logout') }}">
+                                <i class="fa-solid fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

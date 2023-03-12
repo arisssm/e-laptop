@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     @include('component.header')
-    <title>@yield('title', 'Dashboard Elaptop')</title>
-
+    <title>@yield('title', 'Elaptop | Admin ')</title>
 </head>
 <body>
     <div id="app">
