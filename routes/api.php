@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\KeranjangApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/merek', [ApiController::class, 'merek']);
+Route::get('/produk', [ApiController::class, 'produk']);
+Route::get('/bank', [ApiController::class, 'bank']);
+Route::get('/pengiriman', [ApiController::class, 'pengiriman']);
+Route::get('/banner/satu', [ApiController::class, 'bannersatu']);
+Route::get('/banner/dua', [ApiController::class, 'bannerdua']);
+
+Route::resource('/keranjang', KeranjangApiController::class);
