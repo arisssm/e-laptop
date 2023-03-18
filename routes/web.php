@@ -6,6 +6,7 @@ use App\Http\Controllers\BankController;
 use App\Http\Controllers\PengirimanController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KeranjangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,7 @@ ROute::group(['middleware' => 'auth'], function(){
     Route::get('/banner/edit/{id}/{spanduk}', [BannerController::class, 'edit']);
     Route::put('/banner/{id}/{spanduk}', [BannerController::class, 'update']);
     Route::delete('/banner/{id}/{spanduk}', [BannerController::class, 'destroy']);
+    Route::get('/keranjang', [KeranjangController::class, 'index']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
