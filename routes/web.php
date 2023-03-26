@@ -7,6 +7,7 @@ use App\Http\Controllers\PengirimanController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\PesananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +20,12 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginProses'])->name('login.proses');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'registerStore'])->name('register.store');
-Route::get('/', function () {
-    return view('app');
-});
+
 
 ROute::group(['middleware' => 'auth'], function(){
+    Route::get('/', function () {
+        return view('app');
+    });
     Route::resource('/merek', MerekController::class)->except(['show']);
     Route::resource('/produk', ProdukController::class)->except(['show']);
     Route::resource('/bank', BankController::class)->except(['show']);
@@ -35,6 +37,7 @@ ROute::group(['middleware' => 'auth'], function(){
     Route::put('/banner/{id}/{spanduk}', [BannerController::class, 'update']);
     Route::delete('/banner/{id}/{spanduk}', [BannerController::class, 'destroy']);
     Route::get('/keranjang', [KeranjangController::class, 'index']);
+    Route::get('/pesanan', [PesananController::class, 'index']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 

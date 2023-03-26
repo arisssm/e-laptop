@@ -22,13 +22,35 @@ class ApiController extends Controller
             'data' => $merek
         ]);
     }
-    public function produk()
+    public function produk(Request $request)
     {
-        $produk = Produk::with('merek')->get();
+        $produk = $request->q;
+        $paginate = $request->limit;
+
+        if($paginate){
+            $data = Produk::with('merek')->paginate($paginate);
+            return response()->json([
+                'status' => true,
+                'message' => 'Ini adalah data produk paginasi',
+                'data' => $data
+            ]);
+        }
+
+        if($produk)
+        {
+            $data = Produk::where('id', $produk)->with('merek')->first();
+            return response()->json([
+                'status' => true,
+                'message' => 'Ini adalah data produk',
+                'data' => $data
+            ]);
+        }
+
+        $data = Produk::with('merek')->get();
         return response()->json([
             'status' => true,
             'message' => 'Ini adalah data produk',
-            'data' => $produk
+            'data' => $data
         ]);
     }
 

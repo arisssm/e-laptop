@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\KeranjangApiController;
+use App\Http\Controllers\PesananApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,4 @@ Route::get('/banner/satu', [ApiController::class, 'bannersatu']);
 Route::get('/banner/dua', [ApiController::class, 'bannerdua']);
 
 Route::resource('/keranjang', KeranjangApiController::class);
+Route::post('/pesanan', [PesananApiController::class, 'store']);
