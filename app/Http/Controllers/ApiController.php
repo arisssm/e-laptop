@@ -26,7 +26,16 @@ class ApiController extends Controller
     {
         $produk = $request->q;
         $paginate = $request->limit;
+        $rekomendasi = $request->rekomendasi;
 
+        if($rekomendasi=='recommended'){
+            $data=Produk::with('merek')->where('rekomendasi', 'ya')->get();
+            return response()->json([
+                'status' => true,
+                'message' => 'Ini adalah data produk rekomendasi',
+                'data' => $data
+            ]);
+        }
         if($paginate){
             $data = Produk::with('merek')->paginate($paginate);
             return response()->json([
