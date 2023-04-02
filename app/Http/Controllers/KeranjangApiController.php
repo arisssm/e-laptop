@@ -15,7 +15,7 @@ class KeranjangApiController extends Controller
      */
     public function index()
     {
-        $keranjang = Keranjang::all();
+        $keranjang = Keranjang::with('produk')->get();
 
         return response()->json([
             'status' => true,
@@ -138,6 +138,11 @@ class KeranjangApiController extends Controller
      */
     public function destroy(Keranjang $keranjang)
     {
-        
+        Keranjang::destroy($keranjang->id);
+        return response()->json([
+            'status' => true,
+            'message' => 'berhasil menghapus keranjang',
+            'data' => $keranjang
+        ]);
     }
 }
