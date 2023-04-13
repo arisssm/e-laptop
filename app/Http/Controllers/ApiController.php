@@ -85,7 +85,7 @@ class ApiController extends Controller
     }
     public function bannersatu()
     {
-        $banner1 = BannerSatu::all();
+        $banner1 = BannerSatu::first();
         
         return response()->json([
             'status' => true,
@@ -95,7 +95,7 @@ class ApiController extends Controller
     }
     public function bannerdua()
     {
-        $banner2 = BannerDua::all();
+        $banner2 = BannerDua::first();
         
         return response()->json([
             'status' => true,
