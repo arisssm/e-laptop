@@ -68,7 +68,7 @@ class KeranjangApiController extends Controller
                     'banyak' => $isikeranjang->banyak + $request->banyak,
                     'total_harga' => $isikeranjang->total_harga + $total_harga
                 ]);
-                Produk::find($request->produk_id)->update(['stok' => $produk->stok - $request->banyak]);
+                // Produk::find($request->produk_id)->update(['stok' => $produk->stok - $request->banyak]);
 
                 return response()->json([
                     'status' => true,
@@ -83,7 +83,7 @@ class KeranjangApiController extends Controller
                     'banyak' => $request->banyak,
                     'total_harga' => $total_harga
                 ]);
-                Produk::find($request->produk_id)->update(['stok' => $produk->stok - $request->banyak]);
+                // Produk::find($request->produk_id)->update(['stok' => $produk->stok - $request->banyak]);
 
                 return response()->json([
                     'status' => true,
@@ -127,7 +127,14 @@ class KeranjangApiController extends Controller
      */
     public function update(Request $request, Keranjang $keranjang)
     {
-        //
+        Keranjang::where('id', $keranjang->id)->update([
+            'banyak' => $request->banyak,
+        ]);
+        return response()->json([
+            'status' => true,
+            'message' => 'berhasil mengubah keranjang',
+            'data' => $keranjang
+        ]);
     }
 
     /**
