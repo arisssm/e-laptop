@@ -16,7 +16,7 @@ class PesananApiController extends Controller
             'nomor_telepon' => 'required',
             'catatan' => 'required',
             'pengiriman_id' => 'required',
-            'metode_bayar' => 'required',
+            // 'metode_bayar' => 'required',
             'total_ongkir' => 'required',
             'total_tagihan' => 'required'
         ]);
