@@ -63,20 +63,38 @@ class ApiController extends Controller
         ]);
     }
 
-    public function bank()
+    public function bank(Request $request)
     {
+        $id = $request->id;
+        if($id)
+        {
+            $bank = Bank::where('id', $id)->first();
+            return response()->json([
+                'status' => true,
+                'message' => 'Ini adalah data bank',
+                'data' => $bank
+            ]);
+        }
+
         $bank = Bank::all();
-        
         return response()->json([
             'status' => true,
             'message' => 'Ini adalah data bank',
             'data' => $bank
         ]);
     }
-    public function pengiriman()
+    public function pengiriman(Request $request)
     {
+        $id = $request->id;
+        if($id){
+            $pengiriman = Pengiriman::where('id', $id)->first();
+            return response()->json([
+                'status' => true,
+                'message' => 'Ini adalah data pengiriman',
+                'data' => $pengiriman
+            ]);
+        }
         $pengiriman = Pengiriman::all();
-        
         return response()->json([
             'status' => true,
             'message' => 'Ini adalah data pengiriman',
